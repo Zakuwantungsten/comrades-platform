@@ -1,0 +1,13 @@
+To run the backend server using PowerShell, follow these steps:
+
+1. Open PowerShell.
+2. Navigate to the backend directory:
+   ```powershell
+   cd "C:\Users\zakwan_tungsten\Desktop\comrades-platform\backend"
+   ```
+3. Start the server:
+   ```powershell
+   npm start
+   ```
+
+This will start the backend server, and you should see output indicating that the server is running.
