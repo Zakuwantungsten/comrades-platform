@@ -1,4 +1,7 @@
 node_modules
 dist
 *.log
-*.package-lock.json
+*package-lock.json
+eslint*
+*.eslintrc*
+*.env
