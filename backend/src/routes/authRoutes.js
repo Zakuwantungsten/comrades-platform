@@ -6,11 +6,11 @@ import {
   getUser,
   makeAdmin,
   deleteUser
-} from "../controllers/authControllers.js";
+} from "../controllers/authControllers";
 import auth from "../middleware/authMiddleware.js";
 import { userValidationRules, loginValidationRules, makeAdminValidationRules } from "../middleware/validators.js";
 import rateLimit from "express-rate-limit";
-
+console.log("authRoutes.js");
 const authRouter = express.Router();
 
 const authLimiter = rateLimit({ 
