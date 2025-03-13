@@ -5,13 +5,13 @@ import authRouter from "./routes/authRoutes.js";
 
 // Connect to MongoDB
 connectDB();
-
+ 
 const app = express();
 const port = 9090;
 
 app.use(express.json());
 app.use(cors());
-
+ 
 // Corrected API route
 app.use('/api/auth', authRouter);
 

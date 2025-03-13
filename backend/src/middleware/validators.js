@@ -1,16 +1,39 @@
-import { check } from "express-validator";
+import { body, param, validationResult } from "express-validator";
 
-export const userValidationRules = [
-  check("name").notEmpty().withMessage("Name is required"),
-  check("email").isEmail().withMessage("Valid email is required"),
-  check("password").isLength({ min: 6 }).withMessage("Password must be at least 6 characters"),
+// Middleware to handle validation errors
+export const validate = (validations) => {
+  return async (req, res, next) => {
+    console.log(`Validating request data... }` );
+    await Promise.all(validations.map((validation) => validation.run(req)));
+
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array(), message: "Validation failed" });
+    }
+
+    next();
+  };
+};
+
+// Validation rules
+
+export const registerValidation = [
+  body("name").notEmpty().withMessage("Name is required"),
+  body("email").isEmail().withMessage("Invalid email format"),
+  body("password")
+    .isLength({ min: 6 })
+    .withMessage("Password must be at least 6 characters long"),
 ];
 
-export const loginValidationRules = [
-  check("email").isEmail().withMessage("Valid email is required"),
-  check("password").notEmpty().withMessage("Password is required"),
+export const loginValidation = [
+  body("email").isEmail().withMessage("Invalid email format"),
+  body("password").notEmpty().withMessage("Password is required"),
 ];
 
-export const makeAdminValidationRules = [
-  check("userId").isMongoId().withMessage("Invalid user ID"),
+export const makeAdminValidation = [
+  body("userId").isMongoId().withMessage("Invalid user ID format"),
+];
+
+export const deleteUserValidation = [
+  param("id").isMongoId().withMessage("Invalid user ID format"),
 ];

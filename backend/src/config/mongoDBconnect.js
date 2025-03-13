@@ -2,11 +2,12 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 
 // Load environment variables from .env file
-dotenv.config();
-
+dotenv.config({path: './.env'});
+ 
 const connectDB = async () => {
-  const localURI = process.env.MONGODB_LOCAL_DB;
-  const atlasURI = process.env.MONGODB_ATLAS_DB;
+  const localURI = "mongodb://localhost:27017/ln";
+  const atlasURI = "mongodb+srv://comradesAdmin:wAbl4MwCTKAhfdNP@cluster0.5ztrw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+
 
   try {
     // Attempt to connect to local MongoDB first
@@ -31,5 +32,6 @@ const connectDB = async () => {
     }
   }
 };
+connectDB()
 
 export default connectDB;

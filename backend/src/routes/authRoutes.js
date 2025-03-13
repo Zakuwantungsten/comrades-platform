@@ -1,14 +1,15 @@
 import express from "express";
+import { registerUser } from "../controllers/authentification/registerUser.js";
 import {
-  registerUser,
+  
   loginUser,
-  logoutUser,
+ 
   getUser,
   makeAdmin,
-  deleteUser
-} from "../controllers/authControllers.js";
-import auth from "../middleware/authMiddleware.js";
-import { userValidationRules, loginValidationRules, makeAdminValidationRules } from "../middleware/validators.js";
+  deleteUser} from  "../controllers/authControllers.js"
+import authMiddleware from "../middleware/authMiddleware.js";
+
+import {  registerValidation, loginValidation,makeAdminValidation, validate } from "../middleware/validators.js";
 import rateLimit from "express-rate-limit";
 
 const authRouter = express.Router();
@@ -20,11 +21,11 @@ const authLimiter = rateLimit({
 });
 
 // Corrected Routes
-authRouter.post("/register", userValidationRules, registerUser);
-authRouter.post("/login", loginValidationRules, authLimiter, loginUser);
-authRouter.get("/me", auth, getUser);
-authRouter.post("/logout", auth, logoutUser);
-authRouter.post("/make-admin", auth(true), makeAdminValidationRules, makeAdmin);
-authRouter.delete("/:id", auth(true), deleteUser);
+authRouter.post("/register", validate(registerValidation), registerUser);
+authRouter.post("/login", loginValidation, authLimiter, loginUser);
+authRouter.get("/me", authMiddleware, getUser);
+authRouter.post("/make-admin", authMiddleware(true), makeAdminValidation, makeAdmin);
+authRouter.delete("/:id", authMiddleware(true), deleteUser);
 
 export default authRouter;
+
