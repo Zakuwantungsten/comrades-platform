@@ -1,6 +1,6 @@
 import express from "express";
-import { registerUser } from "../controllers/authControllers.js";
 import {
+  registerUser,
   loginUser,
   logoutUser,
   getUser,
@@ -11,20 +11,20 @@ import auth from "../middleware/authMiddleware.js";
 import { userValidationRules, loginValidationRules, makeAdminValidationRules } from "../middleware/validators.js";
 import rateLimit from "express-rate-limit";
 
-const router = express.Router();
+const authRouter = express.Router();
 
-const authLimiter = rateLimit({
+const authLimiter = rateLimit({ 
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 5, // Limit each IP to 5 requests
   message: "Too many login attempts, please try again later",
 });
 
-// Routes
-router.post("/register", userValidationRules, registerUser);
-router.post("/login", loginValidationRules, authLimiter, loginUser);
-router.get("/me", auth, getUser);
-router.post("/logout", auth, logoutUser);
-router.post("/make-admin", auth(true), makeAdminValidationRules, makeAdmin);
-router.delete("/:id", auth(true), deleteUser);
+// Corrected Routes
+authRouter.post("/register", userValidationRules, registerUser);
+authRouter.post("/login", loginValidationRules, authLimiter, loginUser);
+authRouter.get("/me", auth, getUser);
+authRouter.post("/logout", auth, logoutUser);
+authRouter.post("/make-admin", auth(true), makeAdminValidationRules, makeAdmin);
+authRouter.delete("/:id", auth(true), deleteUser);
 
-export default router;
+export default authRouter;
