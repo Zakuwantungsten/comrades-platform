@@ -1,5 +1,5 @@
 import express from "express";
-import { registerUser, loginUser, logoutUser,getUser, makeAdmin,deleteUser } from "../controllers/authControllers.ts";
+import { registerUser, loginUser, logoutUser,getUser, makeAdmin,deleteUser } from "../controllers/authControllers.js";
 import auth from "../middleware/authMiddleware.js";
 import { userValidationRules, loginValidationRules, makeAdminValidationRules } from "../middleware/validators.js";
 import rateLimit from "express-rate-limit";
