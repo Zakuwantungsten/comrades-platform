@@ -1,13 +1,13 @@
 import express from "express";
+import { registerUser } from "../controllers/authControllers.js";
 import {
-  registerUser,
   loginUser,
   logoutUser,
   getUser,
   makeAdmin,
   deleteUser
-} from "../controllers/authController.js";
-import auth from "../middleware/auth.js";
+} from "../controllers/authControllers.js";
+import auth from "../middleware/authMiddleware.js";
 import { userValidationRules, loginValidationRules, makeAdminValidationRules } from "../middleware/validators.js";
 import rateLimit from "express-rate-limit";
 
