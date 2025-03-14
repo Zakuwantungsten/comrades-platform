@@ -9,9 +9,9 @@ dotenv.config();
 connectDB();
  
 const app = express();
-const port = 9090;
+const port = 9190;
 
-app.use(express.json());
+app.use(express.json()); 
 app.use(cors());
  
 // Corrected API route

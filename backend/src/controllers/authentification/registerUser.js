@@ -1,5 +1,4 @@
 import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
 import { validationResult } from "express-validator";
 import User from "../../models/User.js";
 
@@ -56,38 +55,15 @@ export const registerUser = async (req, res) => {
     await user.save();
     console.log("User successfully saved.");
 
-    // Generate JWT Token
-    const payload = {
+    res.status(201).json({
+      success: true,
+      message: "User registered successfully",
       user: {
         id: user.id,
+        name: user.name,
+        email: user.email,
       }
-    };
-
-    console.log("Generating JWT token...");
-    jwt.sign(
-      payload,
-      process.env.JWT_SECRET,
-      { expiresIn: "1h" }, // Token expires in 1 hour
-      (err, token) => {
-        if (err) {
-          console.error("Error generating JWT token:", err);
-          throw err;
-        }
-
-        console.log("JWT Token generated:", token.substring(0, 10) + "... (truncated)"); // Debug token (partially)
-
-        res.status(201).json({
-          success: true,
-          message: "User registered successfully",
-          user: {
-            id: user.id,
-            name: user.name,
-            email: user.email,
-          },
-          token
-        });
-      }
-    );
+    });
   } catch (err) {
     console.error("Registration error:", err.message); // Debug error messages
     res.status(500).json({ 
