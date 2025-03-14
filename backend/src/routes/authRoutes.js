@@ -1,8 +1,8 @@
 import express from "express";
 import { registerUser } from "../controllers/authentification/registerUser.js";
+import { loginUser } from "../controllers/authentification/loginUser.js";
 import {
-  
-  loginUser,
+ 
  
   getUser,
   makeAdmin,
@@ -22,7 +22,7 @@ const authLimiter = rateLimit({
 
 // Corrected Routes
 authRouter.post("/register", validate(registerValidation), registerUser);
-authRouter.post("/login", loginValidation, authLimiter, loginUser);
+authRouter.post("/login", loginValidation,  loginUser);
 authRouter.get("/me", authMiddleware, getUser);
 authRouter.post("/make-admin", authMiddleware(true), makeAdminValidation, makeAdmin);
 authRouter.delete("/:id", authMiddleware(true), deleteUser);

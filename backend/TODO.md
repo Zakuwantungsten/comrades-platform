@@ -5,5 +5,7 @@
 
 - [ ] add profile picture to registration functionality and database schema 
  
- email verification 
+ - [ ]email verification 
  password and confirm persword
+
+ - [ ] login in user 
