@@ -2,7 +2,9 @@ import express from "express";
 import connectDB from "./config/mongoDBconnect.js";
 import cors from "cors";
 import authRouter from "./routes/authRoutes.js";
+import dotenv from "dotenv";
 
+dotenv.config();
 // Connect to MongoDB
 connectDB();
  
