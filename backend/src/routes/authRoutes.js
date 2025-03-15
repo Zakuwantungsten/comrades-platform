@@ -19,7 +19,7 @@ const authLimiter = rateLimit({
   max: 5, // Limit each IP to 5 requests
   message: "Too many login attempts, please try again later",
 });
-
+ 
 // Corrected Routes
 authRouter.post("/register", validate(registerValidation), registerUser);
 authRouter.post("/login", loginValidation,  loginUser);

@@ -10,15 +10,15 @@ dotenv.config();
 connectDB();
  
 const app = express();
-const port = process.env.PORT ||8690;
+const port = process.env.PORT ||9100;
 
 app.use(express.json()); 
 app.use(cors());
    
 // Corrected API route
-app.use('/api/auth', authRouter);
+app.use("/api/auth", authRouter);
 app.use("/api/services", serviceRouter) ;
-
+ 
 app.get('/', (req, res) => {
   res.send('Hello World!');
 });

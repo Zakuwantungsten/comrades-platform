@@ -8,54 +8,42 @@ import { validationResult } from "express-validator";
  * @access Private (Authenticated users only)
  */
 export const createService = async (req, res) => {
-    logger.info("Received request to create a new service");
-
-    // Validate request
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-        logger.warn("Validation errors while creating service", { errors: errors.array() });
-        return res.status(400).json({ message: "Validation failed", errors: errors.array() });
-    }
-
+    logger.info("Received request to create a new service", { requestBody: req.body });
+  
     try {
-        const { title, description, imageUrl, category, price, location, contactInfo } = req.body;
-        const provider = req.user._id; // Assuming auth middleware sets req.user
-
-        // Additional validations
-        if (!title || !description || !imageUrl || !category || !price || !location || !contactInfo) {
-            logger.warn("Missing required fields", { userId: req.user._id });
-            return res.status(400).json({ message: "All fields are required" });
-        }
-
-        if (price < 0) {
-            logger.warn("Invalid price value", { price });
-            return res.status(400).json({ message: "Price must be a positive number" });
-        }
-
-        logger.info("Creating a new service", { title, category, price, provider });
-
-        const service = new Service({
-            title,
-            description,
-            imageUrl,
-            category,
-            price,
-            location,
-            contactInfo,
-            provider,
-        });
-
-        const createdService = await service.save();
-
-        logger.info("Service created successfully", { serviceId: createdService._id });
-
-        res.status(201).json({
-            message: "Service created successfully",
-            service: createdService,
-        });
+      // Extract service data from request
+      const { title, description, imageUrl, category, price, location, provider, status } = req.body;
+    
+      // Create a new service instance
+      const newService = new ServiceScheme({
+        title,
+        description,
+        imageUrl,
+        category,
+        price,
+        location,
+        provider,
+        status: status || "available", // Default to 'available'
+        slug: title.toLowerCase().replace
+      });
+  console.log("Saving service to database..." , newService);
+      // Save service to database
+      const savedService = await newService.save();
+      logger.info("Service created successfully", { serviceId: savedService._id });
+  
+      return res.status(201).json({
+        success: true,
+        message: "Service created successfully",
+        service: savedService
+      });
+  
     } catch (error) {
-        logger.error("Error creating service", { error: error.message });
-        res.status(500).json({ message: "Server error", error: error.message });
+      logger.error("Error creating service", { error: error.message });
+      return res.status(500).json({
+        success: false,
+        message: "Server error. Could not create service.",
+        error: error.message
+      });
     }
-};
-export default createService;
+  };
+export default createService; 

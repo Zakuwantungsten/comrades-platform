@@ -1,35 +1,35 @@
 import ServiceScheme from "../../models/serviceModel.js";
 import logger from "../../utils/logger.js";
-
 /**
- * @desc   Delete a service
- * @route  DELETE /api/services/:id
- * @access Private (Only the service provider or an admin)
+ * @desc   Delete a specific service by title for the logged-in user
+ * @route  DELETE /api/services/delete/:title
+ * @access Private (Only the service provider can delete their own service)
  */
 export const deleteService = async (req, res) => {
-    logger.info("Received request to delete service", { serviceId: req.params.id, userId: req.user._id });
+    const userId = req.user._id; // Extract user ID from JWT
+    const { title } = req.body; // Get title from request body
+
+    if (!title) {
+        return res.status(400).json({ success: false, message: "Service title is required" });
+    }
+
+    logger.info("Received request to delete service", { title, userId });
 
     try {
-        const service = await Service.findById(req.params.id);
+        // Trim spaces and normalize case for matching
+        const service = await ServiceScheme.findOne({ title: title.trim(), provider: userId });
 
         if (!service) {
-            logger.warn("Service not found", { serviceId: req.params.id });
-            return res.status(404).json({ message: "Service not found" });
-        }
-
-        // Check if the user is the provider or an admin
-        if (service.provider.toString() !== req.user._id.toString() && req.user.role !== "admin") {
-            logger.warn("Unauthorized delete attempt", { serviceId: req.params.id, userId: req.user._id });
-            return res.status(403).json({ message: "You are not authorized to delete this service" });
+            return res.status(404).json({ success: false, message: "Service not found or you are not authorized" });
         }
 
         await service.deleteOne();
-        logger.info("Service deleted successfully", { serviceId: req.params.id });
+        logger.info("Service deleted successfully", { title, userId });
 
-        res.status(200).json({ message: "Service deleted successfully" });
+        res.status(200).json({ success: true, message: "Service deleted successfully" });
     } catch (error) {
         logger.error("Error deleting service", { error: error.message });
-        res.status(500).json({ message: "Server error", error: error.message });
+        res.status(500).json({ success: false, message: "Server error", error: error.message });
     }
 };
-export default deleteService;
+export default deleteService; 

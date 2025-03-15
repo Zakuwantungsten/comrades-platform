@@ -2,61 +2,44 @@ import ServiceScheme from "../../models/serviceModel.js";
 import logger from "../../utils/logger.js";
 import { validationResult } from "express-validator";
 
+
 /**
- * @desc   Update an existing service
- * @route  PUT /api/services/:id
- * @access Private (Only the provider can update)
+ * @desc   Update a service
+ * @route  PUT /api/services/update
+ * @access Private (Only the service provider can update)
  */
 export const updateService = async (req, res) => {
-    logger.info("Received request to update service", { serviceId: req.params.id, userId: req.user._id });
+    const userId = req.user._id; // Extract user ID from JWT
+    const { title, updates } = req.body; // Get service title & fields to update
 
-    // Validate request
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-        logger.warn("Validation errors while updating service", { errors: errors.array() });
-        return res.status(400).json({ message: "Validation failed", errors: errors.array() });
+    if (!title || !updates) {
+        return res.status(400).json({ success: false, message: "Service title and update fields are required" });
     }
+
+    logger.info("Received request to update service", { title, userId });
 
     try {
-        const { id } = req.params;
-        const { title, description, imageUrl, category, price, location, contactInfo, status } = req.body;
-
-        let service = await Service.findById(id);
+        // Find service by title and user
+        let service = await ServiceScheme.findOne({ title: title.trim(), provider: userId });
 
         if (!service) {
-            logger.warn("Service not found", { serviceId: id });
-            return res.status(404).json({ message: "Service not found" });
+            logger.warn("Service not found or unauthorized update attempt", { title, userId });
+            return res.status(404).json({ success: false, message: "Service not found or you are not authorized" });
         }
 
-        // Check if the logged-in user is the provider of the service
-        if (service.provider.toString() !== req.user._id.toString()) {
-            logger.warn("Unauthorized attempt to update service", { serviceId: id, userId: req.user._id });
-            return res.status(403).json({ message: "Unauthorized to update this service" });
-        }
-
-        logger.info("Updating service", { serviceId: id });
-
-        // Update fields only if provided
-        service.title = title || service.title;
-        service.description = description || service.description;
-        service.imageUrl = imageUrl || service.imageUrl;
-        service.category = category || service.category;
-        service.price = price !== undefined ? price : service.price;
-        service.location = location || service.location;
-        service.contactInfo = contactInfo || service.contactInfo;
-        service.status = status || service.status;
-
-        const updatedService = await service.save();
-
-        logger.info("Service updated successfully", { serviceId: id });
-
-        res.status(200).json({
-            message: "Service updated successfully",
-            service: updatedService,
+        // Update allowed fields
+        Object.keys(updates).forEach((key) => {
+            service[key] = updates[key];
         });
+
+        await service.save();
+        logger.info("Service updated successfully", { title, userId });
+
+        res.status(200).json({ success: true, message: "Service updated successfully", service });
     } catch (error) {
         logger.error("Error updating service", { error: error.message });
-        res.status(500).json({ message: "Server error", error: error.message });
+        res.status(500).json({ success: false, message: "Server error", error: error.message });
     }
 };
+
 export default updateService;

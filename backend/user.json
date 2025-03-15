@@ -8,3 +8,13 @@
 },
 "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjdkNTVlMmQ5YTNkNWZmOGM5NzkwYzExIn0sImlhdCI6MTc0MjAzODI1MiwiZXhwIjoxNzQyMDc3ODUyfQ.y8xmcbv8OP6KQfD1eZpSCqpFU_e6QP_jqbjadNNvPQc"
 }
+{
+    "title": "Plumbing Services",
+    "description": "Expert plumbing repair and installation.",
+    "imageUrl": "https://example.com/image.jpg",
+    "category": "Home Repair",
+    "price": 50,
+    "location": "Nairobi, Kenya",
+    "contactInfo": "+254712345678"
+  }
+  
