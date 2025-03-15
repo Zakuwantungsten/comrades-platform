@@ -8,7 +8,7 @@ import { validationResult } from "express-validator";
  * @access Private (Authenticated users only)
  */
 export const createService = async (req, res) => {
-    logger.info("Received request to create a new service", { userId: req.user._id });
+    logger.info("Received request to create a new service");
 
     // Validate request
     const errors = validationResult(req);
