@@ -46,10 +46,9 @@ const ServiceSchema = new Schema({
         }
     },
     provider: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: 'User',
-        required: true,
-        index: true
+        required: true
     },
     status: {
         type: String,
@@ -84,5 +83,5 @@ ServiceSchema.pre('save', function (next) {
     next();
 });
 
-const Service = mongoose.model('Service', ServiceSchema);
-export default Service;
+const ServiceScheme= mongoose.model('Service', ServiceSchema);
+export default ServiceScheme;

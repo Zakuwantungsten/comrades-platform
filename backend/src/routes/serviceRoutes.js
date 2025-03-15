@@ -1,12 +1,14 @@
-import createService from "../controllers/services/createServiceCtrl";
-import deleteService from "../controllers/services/deleteServiceCtrl";
-import getServiceById from "../controllers/services/getServiceById";
-import getServicesByProvider from "../controllers/services/getServiceByProviderCtrl";
-import updateService from "../controllers/services/updateServiceCtrl";
-import getServices from "../controllers/services/getServiceCtrl";
+import createService from "../controllers/services/createServiceCtrl.js";
+
+import deleteService from "../controllers/services/deleteServiceCtrl.js";
+import getServiceById from "../controllers/services/getServices/getServiceById.js";
+import getServicesByProvider from "../controllers/services/getServices/getServiceByProviderCtrl.js";
+import updateService from "../controllers/services/updateService.js";
+import getServices from "../controllers/services/getServices/getServiceCtrl.js";
 
 import express from "express";
-//import {protect , admin } from "../middleware/authMiddleware";
+import getAllServices from "../controllers/services/getServices/getAllServices.js";
+//import {protect , admin } from "../middleware/authMiddleware.js";
 
 const serviceRouter = express.Router();
 
@@ -17,7 +19,9 @@ serviceRouter.route("/:id")
   .put( updateService);
 serviceRouter.route("/provider/:id").get(getServicesByProvider);
 
-serviceRouter.route("/all").get( getServices);
+serviceRouter.route("/all").get( getAllServices);
 serviceRouter.route("/count").get( getServices);
 serviceRouter.route("/stats").get( getServices);
 serviceRouter.route("/top").get( getServices);
+
+export default serviceRouter;

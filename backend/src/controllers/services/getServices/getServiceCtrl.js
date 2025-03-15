@@ -1,6 +1,5 @@
-import Service from "../models/Service.js";
-import logger from "../utils/logger.js";
-
+import ServiceScheme from "../../../models/serviceModel.js";
+import logger from "../../../utils/logger.js";
 /**
  * @desc   Get all services with filtering, searching, and pagination
  * @route  GET /api/services

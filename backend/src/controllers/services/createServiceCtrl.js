@@ -1,5 +1,5 @@
-import Service from "../models/Service.js";
-import logger from "../utils/logger.js";
+import ServiceScheme from "../../models/serviceModel.js";
+import logger from "../../utils/logger.js";
 import { validationResult } from "express-validator";
 
 /**
