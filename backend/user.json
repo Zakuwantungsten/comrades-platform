@@ -1,0 +1,10 @@
+{
+"success": true,
+"message": "Login successful",
+"user": {
+  "id": "67d55e2d9a3d5ff8c9790c11",
+  "name": "stan1",
+  "email": "stan1@gmail.com"
+},
+"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjdkNTVlMmQ5YTNkNWZmOGM5NzkwYzExIn0sImlhdCI6MTc0MjAzODI1MiwiZXhwIjoxNzQyMDc3ODUyfQ.y8xmcbv8OP6KQfD1eZpSCqpFU_e6QP_jqbjadNNvPQc"
+}

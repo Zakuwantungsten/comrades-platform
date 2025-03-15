@@ -38,29 +38,11 @@ export const registerUser = async (req, res) => {
 
     console.log("User not found. Proceeding with registration...");
 
-    // Hash the password safely
-    let hashedPassword;
-    try {
-      console.log("Hashing password...");
-      const salt = await bcrypt.genSalt(10);
-      console.log("Generated salt:", salt); // Debug salt
-
-      hashedPassword = await bcrypt.hash(password, salt);
-      console.log("Hashed Password:", hashedPassword); // Debug hashed password
-    } catch (hashError) {
-      console.error("Error hashing password:", hashError);
-      return res.status(500).json({
-        success: false,
-        message: "Error processing password encryption.",
-        error: hashError.message
-      });
-    }
-
     // Create new user
     user = new User({
       name,
       email,
-      password: hashedPassword,
+      password,
     });
 
     console.log("Saving user to database...");
