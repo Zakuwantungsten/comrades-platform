@@ -8,4 +8,11 @@
  - [ ]email verification 
  password and confirm persword
 
+ -[ ] in service the controllers are missing 
+    1 route all 
+    2 count
+    3 stats 
+    4 all
+    
+
  - [ ] login in user 

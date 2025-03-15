@@ -3,6 +3,7 @@ import connectDB from "./config/mongoDBconnect.js";
 import cors from "cors";
 import authRouter from "./routes/authRoutes.js";
 import dotenv from "dotenv";
+import serviceRouter from "./routes/serviceRoutes.js";
 
 dotenv.config();
 // Connect to MongoDB
@@ -13,9 +14,10 @@ const port = process.env.PORT ||8690;
 
 app.use(express.json()); 
 app.use(cors());
- 
+   
 // Corrected API route
 app.use('/api/auth', authRouter);
+app.use("/api/services", serviceRouter) ;
 
 app.get('/', (req, res) => {
   res.send('Hello World!');

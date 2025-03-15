@@ -1,0 +1,394 @@
+[
+    {
+      "title": "Web Development",
+      "description": "Full-stack web development services including frontend and backend.",
+      "imageUrl": "https://example.com/images/web-development.jpg",
+      "category": "Technology",
+      "price": 500,
+      "location": "Nairobi",
+      "contactInfo": {
+        "email": "webdev@example.com",
+        "phone": "+254712345678"
+      },
+      "provider": "65a3b2c4d89aef0012a98765",
+      "status": "available",
+      "rating": 4.8,
+      "numReviews": 25,
+      "slug": "web-development"
+    },
+    {
+      "title": "Graphic Design",
+      "description": "Professional graphic design services including logos, posters, and branding.",
+      "imageUrl": "https://example.com/images/graphic-design.jpg",
+      "category": "Design",
+      "price": 250,
+      "location": "Mombasa",
+      "contactInfo": {
+        "email": "graphics@example.com",
+        "phone": "+254723456789"
+      },
+      "provider": "65a3b2c4d89aef0012a98766",
+      "status": "available",
+      "rating": 4.6,
+      "numReviews": 18,
+      "slug": "graphic-design"
+    },
+    {
+      "title": "Digital Marketing",
+      "description": "SEO, social media marketing, and PPC advertising services.",
+      "imageUrl": "https://example.com/images/digital-marketing.jpg",
+      "category": "Marketing",
+      "price": 400,
+      "location": "Kisumu",
+      "contactInfo": {
+        "email": "marketing@example.com",
+        "phone": "+254734567890"
+      },
+      "provider": "65a3b2c4d89aef0012a98767",
+      "status": "available",
+      "rating": 4.7,
+      "numReviews": 30,
+      "slug": "digital-marketing"
+    },
+    {
+      "title": "Plumbing Services",
+      "description": "Affordable and reliable plumbing repair and installation services.",
+      "imageUrl": "https://example.com/images/plumbing.jpg",
+      "category": "Home Services",
+      "price": 150,
+      "location": "Eldoret",
+      "contactInfo": {
+        "email": "plumbing@example.com",
+        "phone": "+254745678901"
+      },
+      "provider": "65a3b2c4d89aef0012a98768",
+      "status": "available",
+      "rating": 4.5,
+      "numReviews": 12,
+      "slug": "plumbing-services"
+    },
+    {
+      "title": "Photography",
+      "description": "Professional photography for weddings, events, and portraits.",
+      "imageUrl": "https://example.com/images/photography.jpg",
+      "category": "Photography",
+      "price": 600,
+      "location": "Nakuru",
+      "contactInfo": {
+        "email": "photography@example.com",
+        "phone": "+254756789012"
+      },
+      "provider": "65a3b2c4d89aef0012a98769",
+      "status": "available",
+      "rating": 4.9,
+      "numReviews": 22,
+      "slug": "photography"
+    },
+    {
+      "title": "Carpentry",
+      "description": "Custom furniture and home improvement carpentry services.",
+      "imageUrl": "https://example.com/images/carpentry.jpg",
+      "category": "Home Services",
+      "price": 300,
+      "location": "Thika",
+      "contactInfo": {
+        "email": "carpentry@example.com",
+        "phone": "+254767890123"
+      },
+      "provider": "65a3b2c4d89aef0012a98770",
+      "status": "available",
+      "rating": 4.6,
+      "numReviews": 17,
+      "slug": "carpentry"
+    },
+    {
+      "title": "Mobile App Development",
+      "description": "Custom Android and iOS application development services.",
+      "imageUrl": "https://example.com/images/mobile-app.jpg",
+      "category": "Technology",
+      "price": 1000,
+      "location": "Nairobi",
+      "contactInfo": {
+        "email": "appdev@example.com",
+        "phone": "+254778901234"
+      },
+      "provider": "65a3b2c4d89aef0012a98771",
+      "status": "available",
+      "rating": 4.8,
+      "numReviews": 28,
+      "slug": "mobile-app-development"
+    },
+    {
+      "title": "Electrician Services",
+      "description": "Home and commercial electrical installation and repair.",
+      "imageUrl": "https://example.com/images/electrician.jpg",
+      "category": "Home Services",
+      "price": 200,
+      "location": "Machakos",
+      "contactInfo": {
+        "email": "electrician@example.com",
+        "phone": "+254789012345"
+      },
+      "provider": "65a3b2c4d89aef0012a98772",
+      "status": "available",
+      "rating": 4.7,
+      "numReviews": 15,
+      "slug": "electrician-services"
+    },
+    {
+      "title": "Fitness Training",
+      "description": "Personal fitness coaching and workout plans.",
+      "imageUrl": "https://example.com/images/fitness.jpg",
+      "category": "Health & Fitness",
+      "price": 350,
+      "location": "Kisii",
+      "contactInfo": {
+        "email": "fitness@example.com",
+        "phone": "+254890123456"
+      },
+      "provider": "65a3b2c4d89aef0012a98773",
+      "status": "available",
+      "rating": 4.9,
+      "numReviews": 21,
+      "slug": "fitness-training"
+    },
+    {
+      "title": "House Cleaning",
+      "description": "Professional house cleaning and deep cleaning services.",
+      "imageUrl": "https://example.com/images/cleaning.jpg",
+      "category": "Home Services",
+      "price": 100,
+      "location": "Meru",
+      "contactInfo": {
+        "email": "cleaning@example.com",
+        "phone": "+254901234567"
+      },
+      "provider": "65a3b2c4d89aef0012a98774",
+      "status": "available",
+      "rating": 4.5,
+      "numReviews": 14,
+      "slug": "house-cleaning"
+    },
+ 
+    {
+      "title": "Web Development",
+      "description": "Full-stack web development services including frontend and backend.",
+      "imageUrl": "https://example.com/images/web-development.jpg",
+      "category": "Technology",
+      "price": 500,
+      "location": "Nairobi",
+      "contactInfo": {
+        "email": "webdev@example.com",
+        "phone": "+254712345678"
+      },
+      "provider": "65a3b2c4d89aef0012a98765",
+      "status": "available",
+      "rating": 4.8,
+      "numReviews": 25,
+      "slug": "web-development"
+    },
+    {
+      "title": "Graphic Design",
+      "description": "Professional graphic design services including logos, posters, and branding.",
+      "imageUrl": "https://example.com/images/graphic-design.jpg",
+      "category": "Design",
+      "price": 250,
+      "location": "Mombasa",
+      "contactInfo": {
+        "email": "graphics@example.com",
+        "phone": "+254723456789"
+      },
+      "provider": "65a3b2c4d89aef0012a98766",
+      "status": "available",
+      "rating": 4.6,
+      "numReviews": 18,
+      "slug": "graphic-design"
+    },
+    {
+      "title": "Digital Marketing",
+      "description": "SEO, social media marketing, and PPC advertising services.",
+      "imageUrl": "https://example.com/images/digital-marketing.jpg",
+      "category": "Marketing",
+      "price": 400,
+      "location": "Kisumu",
+      "contactInfo": {
+        "email": "marketing@example.com",
+        "phone": "+254734567890"
+      },
+      "provider": "65a3b2c4d89aef0012a98767",
+      "status": "available",
+      "rating": 4.7,
+      "numReviews": 30,
+      "slug": "digital-marketing"
+    },
+    {
+      "title": "Plumbing Services",
+      "description": "Affordable and reliable plumbing repair and installation services.",
+      "imageUrl": "https://example.com/images/plumbing.jpg",
+      "category": "Home Services",
+      "price": 150,
+      "location": "Eldoret",
+      "contactInfo": {
+        "email": "plumbing@example.com",
+        "phone": "+254745678901"
+      },
+      "provider": "65a3b2c4d89aef0012a98768",
+      "status": "available",
+      "rating": 4.5,
+      "numReviews": 12,
+      "slug": "plumbing-services"
+    },
+    {
+      "title": "Photography",
+      "description": "Professional photography for weddings, events, and portraits.",
+      "imageUrl": "https://example.com/images/photography.jpg",
+      "category": "Photography",
+      "price": 600,
+      "location": "Nakuru",
+      "contactInfo": {
+        "email": "photography@example.com",
+        "phone": "+254756789012"
+      },
+      "provider": "65a3b2c4d89aef0012a98769",
+      "status": "available",
+      "rating": 4.9,
+      "numReviews": 22,
+      "slug": "photography"
+    },
+    {
+      "title": "Carpentry",
+      "description": "Custom furniture and home improvement carpentry services.",
+      "imageUrl": "https://example.com/images/carpentry.jpg",
+      "category": "Home Services",
+      "price": 300,
+      "location": "Thika",
+      "contactInfo": {
+        "email": "carpentry@example.com",
+        "phone": "+254767890123"
+      },
+      "provider": "65a3b2c4d89aef0012a98770",
+      "status": "available",
+      "rating": 4.6,
+      "numReviews": 17,
+      "slug": "carpentry"
+    },
+    {
+      "title": "Mobile App Development",
+      "description": "Custom Android and iOS application development services.",
+      "imageUrl": "https://example.com/images/mobile-app.jpg",
+      "category": "Technology",
+      "price": 1000,
+      "location": "Nairobi",
+      "contactInfo": {
+        "email": "appdev@example.com",
+        "phone": "+254778901234"
+      },
+      "provider": "65a3b2c4d89aef0012a98771",
+      "status": "available",
+      "rating": 4.8,
+      "numReviews": 28,
+      "slug": "mobile-app-development"
+    },
+    {
+      "title": "Electrician Services",
+      "description": "Home and commercial electrical installation and repair.",
+      "imageUrl": "https://example.com/images/electrician.jpg",
+      "category": "Home Services",
+      "price": 200,
+      "location": "Machakos",
+      "contactInfo": {
+        "email": "electrician@example.com",
+        "phone": "+254789012345"
+      },
+      "provider": "65a3b2c4d89aef0012a98772",
+      "status": "available",
+      "rating": 4.7,
+      "numReviews": 15,
+      "slug": "electrician-services"
+    },
+    {
+      "title": "Fitness Training",
+      "description": "Personal fitness coaching and workout plans.",
+      "imageUrl": "https://example.com/images/fitness.jpg",
+      "category": "Health & Fitness",
+      "price": 350,
+      "location": "Kisii",
+      "contactInfo": {
+        "email": "fitness@example.com",
+        "phone": "+254890123456"
+      },
+      "provider": "65a3b2c4d89aef0012a98773",
+      "status": "available",
+      "rating": 4.9,
+      "numReviews": 21,
+      "slug": "fitness-training"
+    },
+    {
+      "title": "House Cleaning",
+      "description": "Professional house cleaning and deep cleaning services.",
+      "imageUrl": "https://example.com/images/cleaning.jpg",
+      "category": "Home Services",
+      "price": 100,
+      "location": "Meru",
+      "contactInfo": {
+        "email": "cleaning@example.com",
+        "phone": "+254901234567"
+      },
+      "provider": "65a3b2c4d89aef0012a98774",
+      "status": "available",
+      "rating": 4.5,
+      "numReviews": 14,
+      "slug": "house-cleaning"
+    },
+    {
+      "title": "Landscaping Services",
+      "description": "Professional landscaping and gardening services.",
+      "imageUrl": "https://example.com/images/landscaping.jpg",
+      "category": "Home Services",
+      "price": 250,
+      "location": "Kericho",
+      "contactInfo": {
+        "email": "landscaping@example.com",
+        "phone": "+254912345678"
+      },
+      "provider": "65a3b2c4d89aef0012a98775",
+      "status": "available",
+      "rating": 4.6,
+      "numReviews": 16,
+      "slug": "landscaping-services"
+    },
+    {
+      "title": "Interior Design",
+      "description": "Professional interior design services for homes and offices.",
+      "imageUrl": "https://example.com/images/interior-design.jpg",
+      "category": "Design",
+      "price": 400,
+      "location": "Nairobi",
+      "contactInfo": {
+        "email": "interiordesign@example.com",
+        "phone": "+254923456789"
+      },
+      "provider": "65a3b2c4d89aef0012a98776",
+      "status": "available",
+      "rating": 4.7,
+      "numReviews": 20,
+      "slug": "interior-design"
+    },
+    {
+      "title": "Event Planning",
+      "description": "Professional event planning services for weddings, parties, and corporate events.",
+      "imageUrl": "https://example.com/images/event-planning.jpg",
+      "category": "Events",
+      "price": 500,
+      "location": "Mombasa",
+      "contactInfo": {
+        "email": "eventplanning@example.com",
+        "phone": "+254934567890"
+      },
+      "provider": "65a3b2c4d89aef0012a98777",
+      "status": "available",
+      "rating": 4.8,
+      "numReviews": 25,
+      "slug": "event-planning"
+    }
+    ]

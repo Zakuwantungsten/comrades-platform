@@ -7,9 +7,9 @@ import {
   getUser,
   makeAdmin,
   deleteUser} from  "../controllers/authControllers.js"
-import authMiddleware from "../middleware/authMiddleware.js";
+import authMiddleware from "../middleware/auth/authMiddleware.js";
 
-import {  registerValidation, loginValidation,makeAdminValidation, validate } from "../middleware/validators.js";
+import {  registerValidation, loginValidation,makeAdminValidation, validate } from "../middleware/auth/validators.js";
 import rateLimit from "express-rate-limit";
 
 const authRouter = express.Router();
