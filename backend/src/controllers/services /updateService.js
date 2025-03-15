@@ -59,3 +59,4 @@ export const updateService = async (req, res) => {
         res.status(500).json({ message: "Server error", error: error.message });
     }
 };
+export default updateService;
