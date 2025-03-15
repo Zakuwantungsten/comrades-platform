@@ -28,29 +28,39 @@ export const loginUser = async (req, res) => {
   try {
     // Check if the user exists
     let user = await User.findOne({ email });
-    console.log("User found in database:", user ? user.email : "Not found");
-
+    
     if (!user) {
+      console.log("User not found in database:", email);
       return res.status(401).json({
         success: false,
         message: "Invalid credentials. User not found."
       });
     }
 
-    // Validate password
-    console.log("Comparing passwords...");
-    console.log("Entered Password:", password);
+    console.log("User found in database:", user.email);
+    console.log("Stored Hashed Password:", user.password);
 
+    // Ensure user.password is defined before comparing
+    if (!user.password) {
+      console.error("User password is missing in the database.");
+      return res.status(500).json({
+        success: false,
+        message: "Server error. User password is missing in the database."
+      });
+    }
+
+    // Compare entered password with stored hashed password
     const isMatch = await bcrypt.compare(password, user.password);
-    
+    console.log("Password Match Result:", isMatch);
+
     if (!isMatch) {
       console.log("Password does not match.");
       return res.status(401).json({
         success: false,
         message: "Invalid credentials. Incorrect password."
-      });
+      }); 
     }
-
+  
     // Generate JWT Token
     const payload = { user: { id: user.id } };
     console.log("Generating JWT token...");

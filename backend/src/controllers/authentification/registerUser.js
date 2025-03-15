@@ -8,7 +8,7 @@ import User from "../../models/User.js";
  * @access  Public
  */
 export const registerUser = async (req, res) => {
-  console.log("Incoming request to register user:", req.body); // Log incoming request body
+  console.log("Incoming request to register user:", req.body); // Debug: Incoming request body
 
   // Validate request data
   const errors = validationResult(req);
@@ -22,27 +22,39 @@ export const registerUser = async (req, res) => {
   }
 
   const { name, email, password } = req.body;
-  console.log("Extracted data - Name:", name, "Email:", email, "Password:", password);
+  console.log("Extracted data - Name:", name, "Email:", email); // Removed password logging for security
 
   try {
     // Check if the email is already registered
     let user = await User.findOne({ email });
-    console.log("User found in database:", user); // Debug: Check if user already exists
 
     if (user) {
+      console.log("User already exists:", user.email);
       return res.status(400).json({ 
         success: false,
         message: "User already exists. Please log in instead."
       });
     }
 
-    // Hash the password
-    console.log("Hashing password...");
-    const salt = await bcrypt.genSalt(10);
-    console.log("Generated salt:", salt); // Debug salt
+    console.log("User not found. Proceeding with registration...");
 
-    const hashedPassword = await bcrypt.hash(password, salt);
-    console.log("Hashed Password:", hashedPassword); // Debug hashed password
+    // Hash the password safely
+    let hashedPassword;
+    try {
+      console.log("Hashing password...");
+      const salt = await bcrypt.genSalt(10);
+      console.log("Generated salt:", salt); // Debug salt
+
+      hashedPassword = await bcrypt.hash(password, salt);
+      console.log("Hashed Password:", hashedPassword); // Debug hashed password
+    } catch (hashError) {
+      console.error("Error hashing password:", hashError);
+      return res.status(500).json({
+        success: false,
+        message: "Error processing password encryption.",
+        error: hashError.message
+      });
+    }
 
     // Create new user
     user = new User({
@@ -51,7 +63,7 @@ export const registerUser = async (req, res) => {
       password: hashedPassword,
     });
 
-    console.log("Saving user to database:", user);
+    console.log("Saving user to database...");
     await user.save();
     console.log("User successfully saved.");
 
@@ -64,6 +76,7 @@ export const registerUser = async (req, res) => {
         email: user.email,
       }
     });
+
   } catch (err) {
     console.error("Registration error:", err.message); // Debug error messages
     res.status(500).json({ 
